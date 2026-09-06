@@ -10,7 +10,6 @@ export default function Home() {
           <p className="absolute top-2 left-2 px-3 rounded-md bg-neutral-900 text-white ">
             Animated tab
           </p>
-
           <AnimatedTab />
         </div>
       </main>
