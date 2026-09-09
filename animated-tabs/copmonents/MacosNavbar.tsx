@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { ChevronUp } from "lucide-react";
 const sections = [
   { id: "home", label: "Home" },
   { id: "Conributions", label: "Conributions" },
@@ -76,10 +77,10 @@ const MacosNavbar = () => {
           damping: 30,
         },
       }}
-      className="fixed bottom-6 left-1/2 z-50 flex py-2.5   w-fit -translate-x-1/2 items-center justify-center gap-1 rounded-2xl bg-neutral-900 px-3.5   text-white"
+      className="fixed bottom-6 left-1/2 z-50 flex py-2.5  ring-2 ring-neutral-700   w-fit -translate-x-1/2 items-center justify-center gap-1 rounded-2xl bg-neutral-900 px-3.5   text-white"
     >
       <motion.div
-        className="grid h-8 w-8 cursor-pointer relative absoulte place-items-center rounded-full bg-[#151515]"
+        className="grid h-8 w-8 shrink-0 cursor-pointer relative place-items-center rounded-full bg-[#151515]"
         onClick={() =>
           window.scrollTo({
             top: 0,
@@ -96,7 +97,6 @@ const MacosNavbar = () => {
             stroke="#333"
             strokeWidth="3"
           />
-
           <motion.circle
             cx="16"
             cy="16"
