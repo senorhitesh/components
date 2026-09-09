@@ -87,8 +87,9 @@ const MovieTickeBtn = () => {
       -translate-x-1/2  left-1/2 
        group-hover:top-0
       top-20
-       transition-all duration-100
+       transition-all duration-50
       bg-purple-500
+      blur-xs
       group-hover:scale-105
       z-0  
     "
@@ -119,8 +120,8 @@ const MovieTickeBtn = () => {
       h-full
       -translate-x-1/2  left-1/2 
        group-hover:top-0
-      top-20
-       transition-all duration-100
+      top-20       blur-xs
+       transition-all duration-50
       bg-purple-500
       group-hover:scale-105
       z-0  
