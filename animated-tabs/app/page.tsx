@@ -1,6 +1,7 @@
 import AnimatedTab from "@/copmonents/Animated-tabs";
 import GooeySearch from "@/copmonents/GooeySearch";
 import MovieTickeBtn from "@/copmonents/MovieTickeBtn";
+import GooeyTooltip from "@/copmonents/GooeyTooltip";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans ">
@@ -23,6 +24,12 @@ export default function Home() {
             Gooey Search
           </p>
           <GooeySearch />
+        </div>{" "}
+        <div className="border relative  rounded border-neutral-100 bg-white w-full mt-12 h-fit py-8 flex items-center justify-center">
+          <p className="absolute top-2 left-2 px-3 rounded-md bg-neutral-900 text-neutral-50 ">
+            ToolTip
+          </p>
+          <GooeyTooltip />
         </div>
       </main>
     </div>

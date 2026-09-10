@@ -29,11 +29,6 @@ const GooeySearch = () => {
     },
   };
 
-  const TRANSITION = {
-    duration: 0.7,
-    type: "spring" as const,
-    bounce: 0.22,
-  };
   useEffect(() => {
     if (isExpanded) {
       inputRef.current?.focus();
@@ -89,7 +84,7 @@ const GooeySearch = () => {
 
 export default GooeySearch;
 
-const SVG = () => {
+export const SVG = () => {
   return (
     <svg className="absolute hidden h-0 w-0">
       <defs>
@@ -107,4 +102,9 @@ const SVG = () => {
       </defs>
     </svg>
   );
+};
+export const TRANSITION = {
+  duration: 0.7,
+  type: "spring" as const,
+  bounce: 0.22,
 };
