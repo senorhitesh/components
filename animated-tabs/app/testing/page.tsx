@@ -1,9 +1,9 @@
 "use client";
-import GooeyTooltip from "@/copmonents/GooeyTooltip";
+import AnimatedNumber from "@/copmonents/AnimatedNumber";
 const page = () => {
   return (
-    <div className="flex bg-neutral-50 items-center justify-center h-screen w-full ">
-      <GooeyTooltip />
+    <div className="flex bg-white items-center justify-center h-screen w-full ">
+      <AnimatedNumber />
     </div>
   );
 };

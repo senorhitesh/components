@@ -1,24 +1,29 @@
 "use client";
-import { AnimatePresence, motion } from "motion/react";
-import { LucideIcon, Plus, Upload } from "lucide-react";
+import { motion, Variants } from "motion/react";
+import { LucideIcon, Plus, Search, Upload } from "lucide-react";
 import { SVG } from "@/copmonents/GooeySearch";
-import { useRef, useState } from "react";
+import { useState, useRef } from "react";
 
 interface navItemsProps {
-  label?: string;
+  label?: String;
   icon?: LucideIcon;
-  tooltip: string;
+  tooltip: String;
 }
-
 const NavItems: navItemsProps[] = [
   { icon: Plus, tooltip: "Add to cart" },
   { label: "Share", icon: Upload, tooltip: "Copy link" },
   { label: "Projects", tooltip: "View Latests" },
 ];
-
-const POP_TRANSITION = { duration: 0.7, type: "spring" as const, bounce: 0.22 };
-const MOVE_TRANSITION = { duration: 0.3, type: "spring" as const, bounce: 0.2 };
-
+const POP_TRANSITION = {
+  duration: 0.7,
+  type: "spring" as const,
+  bounce: 0.22,
+};
+const MOVE_TRANSITION = {
+  duration: 0.2,
+  type: "spring" as const,
+  bounce: 0.2,
+};
 const GooeyTooltip = () => {
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [isFresh, setIsFresh] = useState(true);
@@ -26,7 +31,6 @@ const GooeyTooltip = () => {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0 });
-
   const updatePosition = (idx: number) => {
     const item = itemRefs.current[idx];
     const container = containerRef.current;
@@ -36,21 +40,16 @@ const GooeyTooltip = () => {
       setPos({ x: itemRect.left - containerRect.left + itemRect.width / 2 });
     }
   };
-
   const handleEnter = (idx: number) => {
     updatePosition(idx);
-    setIsFresh(!insideRef.current);
+    setIsFresh(!insideRef.current); // fresh only if we weren't already inside
     insideRef.current = true;
     setHoverIdx(idx);
   };
-
   const handleLeaveGroup = () => {
     insideRef.current = false;
     setHoverIdx(null);
   };
-
-  const active = hoverIdx !== null ? NavItems[hoverIdx] : null;
-
   return (
     <>
       <SVG />
@@ -60,27 +59,25 @@ const GooeyTooltip = () => {
         className="relative h-10 flex items-center gap-2 rounded-4xl"
         onMouseLeave={handleLeaveGroup}
       >
-        <AnimatePresence onExitComplete={() => setIsFresh(true)}>
-          {active && (
-            <motion.div
-              key="tooltip"
-              layout
-              initial={{ scale: 0, opacity: 0, filter: "blur(1px)", top: 0 }}
-              animate={{
-                scale: 1,
-                opacity: 1,
-                filter: "blur(0px)",
-                top: -45,
-                x: pos.x,
-              }}
-              exit={{ scale: 0, opacity: 0, filter: "blur(1px)", top: 0 }}
-              transition={isFresh ? POP_TRANSITION : MOVE_TRANSITION}
-              className="absolute z-0 -translate-x-1/2 whitespace-nowrap w-max py-1 px-4 bg-neutral-900 text-white rounded-md pointer-events-none"
-            >
-              {active.tooltip}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          layout
+          initial={{ scale: 0, opacity: 0, filter: "blur(1px)" }}
+          animate={
+            hoverIdx !== null
+              ? {
+                  scale: 1,
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  top: -45,
+                  x: pos.x,
+                }
+              : { scale: 0, opacity: 0, filter: "blur(1px)", top: 0, x: pos.x }
+          }
+          transition={isFresh ? POP_TRANSITION : MOVE_TRANSITION}
+          className="absolute z-0 -translate-x-1/2 whitespace-nowrap w-max py-1 px-4 bg-neutral-900 text-white rounded-md pointer-events-none"
+        >
+          {hoverIdx !== null ? NavItems[hoverIdx].tooltip : ""}
+        </motion.div>
 
         {NavItems.map((nav, idx) => {
           const Icon = nav.icon;
@@ -103,5 +100,4 @@ const GooeyTooltip = () => {
     </>
   );
 };
-
 export default GooeyTooltip;
