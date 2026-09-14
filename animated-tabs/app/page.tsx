@@ -3,6 +3,7 @@ import GooeySearch from "@/copmonents/GooeySearch";
 import MovieTickeBtn from "@/copmonents/MovieTickeBtn";
 import GooeyTooltip from "@/copmonents/GooeyTooltip";
 import AnimatedNumber from "@/copmonents/AnimatedNumber";
+import LinkPreview from "@/copmonents/LinkPreview";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans ">
@@ -28,7 +29,7 @@ export default function Home() {
         </div>{" "}
         <div className="border relative  rounded border-neutral-100 bg-white w-full mt-12 h-fit py-8 flex items-center justify-center">
           <p className="absolute top-2 left-2 px-3 rounded-md bg-neutral-900 text-neutral-50 ">
-            ToolTip
+            Gooey ToolTip
           </p>
           <GooeyTooltip />
         </div>{" "}
@@ -37,6 +38,12 @@ export default function Home() {
             Animated Number
           </p>
           <AnimatedNumber />
+        </div>{" "}
+        <div className="border relative  rounded border-neutral-100 bg-white w-full mt-12 h-fit py-8 flex items-center justify-center">
+          <p className="absolute top-2 left-2 px-3 rounded-md bg-neutral-900 text-neutral-50 ">
+            Link Preview
+          </p>
+          <LinkPreview />
         </div>
       </main>
     </div>

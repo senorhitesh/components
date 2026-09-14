@@ -37,10 +37,12 @@ const AnimatedNumber = () => {
             initial={{
               y: direction * 25,
               opacity: 0,
+              filter: "blur(2px)",
             }}
             animate={{
               y: 0,
               opacity: 1,
+              filter: "blur(0px)",
             }}
             exit={{
               y: direction * -25,
